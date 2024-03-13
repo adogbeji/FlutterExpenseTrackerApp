@@ -11,8 +11,11 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Expenses Screen'),
+      body: Column(
+        children: [
+          Text('CHART'),
+          Text('EXPENSES LIST'),
+        ],
       ),
     );
   }
