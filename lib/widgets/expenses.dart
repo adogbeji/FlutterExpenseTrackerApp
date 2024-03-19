@@ -26,7 +26,12 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
-  void _openAddExpenseOverlay() {}
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const Text('Modal Bottom sheet'),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,9 @@ class _ExpensesState extends State<Expenses> {
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
-            icon: const Icon(Icons.add,),
+            icon: const Icon(
+              Icons.add,
+            ),
           ),
         ],
       ),
