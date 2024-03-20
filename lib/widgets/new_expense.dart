@@ -18,17 +18,27 @@ class _NewExpenseState extends State<NewExpense> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          TextField(
-            onChanged: _saveTitleInput,
-            maxLength: 50,
-            decoration: const InputDecoration(
-              label: Text('Title'),
-            ),
+      child: Column(children: [
+        TextField(
+          onChanged: _saveTitleInput,
+          maxLength: 50,
+          decoration: const InputDecoration(
+            label: Text('Title'),
           ),
-        ]
-      ),
+        ),
+
+        // Buttons
+        Row(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                print(_enteredTitle);
+              },
+              child: const Text('Save Expense'),
+            ),
+          ],
+        ),
+      ]),
     );
   }
 }
