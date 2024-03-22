@@ -33,9 +33,9 @@ class _NewExpenseState extends State<NewExpense> {
 
         TextField(
           controller: _amountController,
-          maxLength: 50,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
+            prefixText: '\$ ',
             label: Text('Amount'),
           ),
         ),
