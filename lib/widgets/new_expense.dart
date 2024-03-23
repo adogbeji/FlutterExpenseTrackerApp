@@ -31,14 +31,35 @@ class _NewExpenseState extends State<NewExpense> {
           ),
         ),
 
-        TextField(
-          controller: _amountController,
-          keyboardType: TextInputType.number,
-          decoration: const InputDecoration(
-            prefixText: '\$ ',
-            label: Text('Amount'),
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  prefixText: '\$ ',
+                  label: Text('Amount'),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16,),
+            const Expanded(
+              child: Row(
+                children: [],
+              ),
+            ),
+          ],
         ),
+
+        // TextField(
+        //   controller: _amountController,
+        //   keyboardType: TextInputType.number,
+        //   decoration: const InputDecoration(
+        //     prefixText: '\$ ',
+        //     label: Text('Amount'),
+        //   ),
+        // ),
 
         // Buttons
         Row(
