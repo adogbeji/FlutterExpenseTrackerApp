@@ -91,6 +91,7 @@ class _NewExpenseState extends State<NewExpense> {
         // Buttons
         Row(
           children: [
+            DropdownButton(items: Category.values.map((category) => DropdownMenuItem(child: Text(category.name.toString()))), onChanged: (value) {}),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
