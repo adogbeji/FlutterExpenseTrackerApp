@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:expense_tracker/models/expense.dart';  // Used for date formatter variable
+import 'package:expense_tracker/models/expense.dart'; // Used for date formatter variable
 
 class NewExpense extends StatefulWidget {
   const NewExpense({super.key});
@@ -13,6 +13,7 @@ class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
+  Category _selectedCategory = Category.leisure;
 
   void _presentDatePicker() async {
     final now = DateTime.now();
@@ -68,7 +69,9 @@ class _NewExpenseState extends State<NewExpense> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(_selectedDate == null ? 'No Date Selected': formatter.format(_selectedDate!)),
+                  Text(_selectedDate == null
+                      ? 'No Date Selected'
+                      : formatter.format(_selectedDate!)),
                   IconButton(
                     onPressed: _presentDatePicker,
                     icon: const Icon(Icons.calendar_month),
@@ -79,19 +82,34 @@ class _NewExpenseState extends State<NewExpense> {
           ],
         ),
 
-        // TextField(
-        //   controller: _amountController,
-        //   keyboardType: TextInputType.number,
-        //   decoration: const InputDecoration(
-        //     prefixText: '\$ ',
-        //     label: Text('Amount'),
-        //   ),
-        // ),
-
+        const SizedBox(
+          height: 16,
+        ),
+      
         // Buttons
         Row(
           children: [
-            DropdownButton(items: Category.values.map((category) => DropdownMenuItem(child: Text(category.name.toString()))), onChanged: (value) {}),
+            DropdownButton(
+              value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },),
+                const Spacer(),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
