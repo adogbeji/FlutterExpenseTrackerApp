@@ -65,6 +65,7 @@ class _NewExpenseState extends State<NewExpense> {
         category: _selectedCategory,
       ),
     );
+    Navigator.pop(context);  // Closes modal
   }
 
   @override
