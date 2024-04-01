@@ -12,20 +12,22 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpense = [
-    Expense(
-      title: 'Flutter Course',
-      amount: 19.99,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expense(
-      title: 'Cinema',
-      amount: 15.69,
-      date: DateTime.now(),
-      category: Category.leisure,
-    ),
-  ];
+  // final List<Expense> _registeredExpense = [
+  //   Expense(
+  //     title: 'Flutter Course',
+  //     amount: 19.99,
+  //     date: DateTime.now(),
+  //     category: Category.work,
+  //   ),
+  //   Expense(
+  //     title: 'Cinema',
+  //     amount: 15.69,
+  //     date: DateTime.now(),
+  //     category: Category.leisure,
+  //   ),
+  // ];
+
+  final List<Expense> _registeredExpense = [];
 
   void _openAddExpenseOverlay() {
     // Open modal overlay
@@ -52,6 +54,17 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No Expenses Found. Please add some!'),
+    );
+
+    if (_registeredExpense.isNotEmpty) {
+      mainContent = ExpensesList(
+              expenses: _registeredExpense,
+              onRemoveExpense: _removeExpense,
+            );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Expense Tracker'),
@@ -68,10 +81,7 @@ class _ExpensesState extends State<Expenses> {
         children: [
           const Text('CHART'),
           Expanded(
-            child: ExpensesList(
-              expenses: _registeredExpense,
-              onRemoveExpense: _removeExpense,
-            ),
+            child: mainContent,
           ),
         ],
       ),
