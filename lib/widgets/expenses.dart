@@ -50,6 +50,16 @@ class _ExpensesState extends State<Expenses> {
     setState(() {
       _registeredExpense.remove(expense);
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3,),
+        content: const Text('Expense Deleted!'),
+        action: SnackBarAction(
+          onPressed: () {},
+          label: 'Undo',
+        ),
+      ),
+    );
   }
 
   @override
@@ -60,9 +70,9 @@ class _ExpensesState extends State<Expenses> {
 
     if (_registeredExpense.isNotEmpty) {
       mainContent = ExpensesList(
-              expenses: _registeredExpense,
-              onRemoveExpense: _removeExpense,
-            );
+        expenses: _registeredExpense,
+        onRemoveExpense: _removeExpense,
+      );
     }
 
     return Scaffold(
