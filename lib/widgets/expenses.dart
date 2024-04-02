@@ -46,6 +46,8 @@ class _ExpensesState extends State<Expenses> {
   }
 
   void _removeExpense(Expense expense) {
+    final expenseIndex = _registeredExpense.indexOf(expense);  // Index value of the expense
+
     // Removes expense
     setState(() {
       _registeredExpense.remove(expense);
@@ -55,7 +57,11 @@ class _ExpensesState extends State<Expenses> {
         duration: const Duration(seconds: 3,),
         content: const Text('Expense Deleted!'),
         action: SnackBarAction(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              _registeredExpense.insert(expenseIndex, expense);  // Brings back deleted expense
+            });
+          },
           label: 'Undo',
         ),
       ),
