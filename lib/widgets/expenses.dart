@@ -52,6 +52,7 @@ class _ExpensesState extends State<Expenses> {
     setState(() {
       _registeredExpense.remove(expense);
     });
+    ScaffoldMessenger.of(context).clearSnackBars();  // Removes all existing info messages ("snack bars")
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: const Duration(seconds: 3,),
