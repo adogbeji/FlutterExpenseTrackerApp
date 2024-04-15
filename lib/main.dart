@@ -15,8 +15,8 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]).then((fn) {});
-  runApp(
+  ]).then((fn) {
+    runApp(
     MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: kDarkColorScheme,
@@ -64,4 +64,5 @@ void main() {
       home: const Expenses(),
     ),
   );
+  });
 }
