@@ -13,10 +13,10 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();  // Ensures that locking orientation & running app works normally
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((fn) {
+  // WidgetsFlutterBinding.ensureInitialized();  // Ensures that locking orientation & running app works normally
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
     runApp(
     MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
@@ -65,5 +65,5 @@ void main() {
       home: const Expenses(),
     ),
   );
-  });
+  // });
 }
